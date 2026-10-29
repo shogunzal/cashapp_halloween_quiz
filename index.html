@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Cash App $750 Halloween Quiz</title>
+  <meta name="description" content="Answer 4 quick questions and unlock a $750 Cash App Halloween reward by completing sponsor deals.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #040a06;
+      --text: #fff;
+      --muted: #a3b0a7;
+      --dim: #66766b;
+      --green: #00D632;
+      --orange: #ff7a1a;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: var(--bg); color: var(--text); }
+    body {
+      min-height: 100vh;
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      background:
+        radial-gradient(circle at 82% 4%, rgba(0,214,50,.2) 0 50px, transparent 150px),
+        radial-gradient(ellipse at 50% 0, #0a3a1a 0, #040a06 62%) fixed,
+        var(--bg);
+    }
+    button, a { font: inherit; }
+    a { color: inherit; text-decoration: none; }
+    .page { position: relative; min-height: 100vh; overflow: hidden; }
+    .deco { position: absolute; inset: 0; pointer-events: none; }
+    .moon { position: absolute; right: 18px; top: 18px; width: 52px; height: 52px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #fff6c4, #ffe27a 70%); box-shadow: 0 0 44px rgba(0,214,50,.55); }
+    .bat { position: absolute; fill: #000; animation: float 4s ease-in-out infinite; }
+    .bat.b2 { animation-delay: -2s; }
+    @keyframes float { 50% { transform: translateY(-6px) rotate(-4deg); } }
+    .wrap { position: relative; z-index: 1; width: min(100%, 480px); margin: 0 auto; padding: 28px 16px 40px; }
+    .logo { width: 84px; height: 84px; margin: 0 auto 18px; display: block; border-radius: 22px; object-fit: cover; box-shadow: 0 0 0 2px rgba(0,214,50,.55), 0 14px 36px rgba(0,214,50,.3); }
+    .pill { display: inline-flex; align-items: center; gap: 6px; margin: 0 auto 14px; padding: 6px 12px; border-radius: 999px; background: rgba(255,122,26,.14); border: 1px solid rgba(255,122,26,.55); color: #ffb070; font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+    .hero { text-align: center; }
+    h1 { margin: 0 0 16px; font-size: 42px; line-height: 1.08; font-weight: 900; letter-spacing: -.04em; }
+    h1 .grad { display: block; background: linear-gradient(90deg, #00D632, #7dff9a); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .copy { max-width: 400px; margin: 0 auto 20px; color: var(--muted); font-size: 15px; line-height: 1.6; }
+    .ca { color: var(--green); }
+    .card { position: relative; margin: 4px 0 16px; padding: 16px; border-radius: 22px; text-align: left; overflow: hidden; background: linear-gradient(145deg, #0f3d1d, #06180c 70%); border: 1px solid rgba(0,214,50,.4); box-shadow: 0 18px 40px rgba(0,0,0,.4); }
+    .card-top, .pick, .payout { display: flex; align-items: center; gap: 10px; }
+    .card-top img, .mini img { width: 40px; height: 40px; border-radius: 11px; object-fit: cover; }
+    .card-brand { flex: 1; }
+    .card-brand b, .pick b { display: block; color: #fff; }
+    .card-brand span, .pick span { display: block; color: #ffb070; font-size: 12px; font-weight: 700; }
+    .status, .unlocked { padding: 4px 9px; border-radius: 999px; background: rgba(255,122,26,.16); border: 1px solid rgba(255,122,26,.5); color: #ffb070; font-size: 10px; font-weight: 800; letter-spacing: .08em; }
+    .amt { margin: 14px 0 12px; font-size: 54px; font-weight: 900; letter-spacing: -.03em; line-height: 1; }
+    .amt small { font-size: 26px; color: #9fe8b0; }
+    .rows { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .rows div { padding: 8px 10px; border-radius: 12px; background: rgba(255,255,255,.06); }
+    .rows span { display: block; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: #8ea596; font-weight: 800; }
+    .rows b { display: block; font-size: 13px; }
+    .pumpkin { position: absolute; right: 14px; top: 58px; width: 64px; height: 64px; transform: rotate(8deg); }
+    .btn, .claim {
+      display: flex; align-items: center; justify-content: center; width: 100%; min-height: 58px; padding: 13px 26px;
+      border: 0; border-radius: 16px; color: #fff; background: linear-gradient(180deg, #19e04a, #00D632);
+      font-size: 1.15rem; font-weight: 800; cursor: pointer; box-shadow: 0 6px 0 #007a1d, 0 14px 30px rgba(0,214,50,.32);
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+    .btn:hover, .claim:hover { transform: translateY(-2px); }
+    .btn:disabled { animation: none; opacity: .55; box-shadow: none; cursor: not-allowed; transform: none; }
+    @keyframes pulse { 50% { transform: scale(1.025); } }
+    .timer, .spots { text-align: center; }
+    .timer { display: flex; justify-content: center; gap: 6px; margin: 14px 0 4px; color: #ffb070; font-size: 13px; font-weight: 800; }
+    .timer b, .result-timer b { color: #fff; font-variant-numeric: tabular-nums; }
+    .spots { margin: 0 0 16px; color: #b9cbbd; font-size: 12px; }
+    .spots b { color: var(--green); }
+    .proof { display: flex; align-items: center; justify-content: center; gap: 18px; margin: 0 auto 14px; padding: 12px 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,.07); background: rgba(255,255,255,.03); }
+    .proof div { text-align: center; }
+    .proof strong { display: block; font-size: 17px; font-weight: 900; }
+    .proof span { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: .04em; text-transform: uppercase; }
+    .proof i { width: 1px; height: 28px; background: rgba(255,255,255,.1); }
+    .journey, .social, .notice { margin-top: 18px; border: 1px solid rgba(255,255,255,.08); border-radius: 12px; background: rgba(255,255,255,.02); text-align: left; overflow: hidden; }
+    .journey-head, .social-label { padding: 14px 16px; color: var(--muted); font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; text-align: center; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .step { display: grid; grid-template-columns: 30px 1fr; gap: 12px; padding: 16px; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .step:last-child { border-bottom: 0; }
+    .num { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: rgba(0,214,50,.14); border: 1px solid rgba(0,214,50,.22); color: #9fe8b0; font-weight: 900; }
+    .step h3, .review p { margin: 0 0 4px; }
+    .step h3 { font-size: 15px; }
+    .step p, .review p, .notice p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .social { padding: 16px; }
+    .social-head { display: flex; justify-content: space-between; margin-bottom: 14px; color: var(--dim); font-size: 10px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .who { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .av { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: rgba(0,214,50,.2); border: 1px solid rgba(0,214,50,.35); font-size: 12px; font-weight: 800; }
+    .city { padding: 3px 8px; border-radius: 999px; background: rgba(255,255,255,.06); color: var(--muted); font-size: 9px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+    .stars { color: #fbbf24; letter-spacing: 1px; font-size: 11px; }
+    .rule { height: 1px; margin: 16px 0; background: rgba(255,255,255,.06); }
+    .notice { border-color: rgba(255,77,77,.26); background: linear-gradient(180deg, rgba(255,77,77,.08), rgba(255,255,255,.02)); }
+    .flag { display: inline-flex; min-height: 24px; align-items: center; padding: 0 10px; background: #ff4d4d; font-size: 10px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; border-bottom-right-radius: 10px; }
+    .notice div { padding: 14px 16px 16px; }
+    .notice h3 { margin: 0 0 6px; font-size: 15px; }
+    .foot { margin-top: 14px; text-align: center; color: var(--dim); font-size: 11px; line-height: 1.5; }
+    .overlay { position: fixed; inset: 0; z-index: 20; display: none; align-items: center; justify-content: center; padding: 16px; background: rgba(0,0,0,.55); backdrop-filter: blur(14px); }
+    .overlay.open { display: flex; }
+    .modal { width: min(480px, 100%); max-height: 90dvh; display: flex; flex-direction: column; overflow: hidden; border-radius: 18px; border: 1px solid rgba(0,194,46,.25); background: rgba(5,16,9,.96); box-shadow: 0 26px 90px rgba(0,0,0,.72); }
+    .glow { height: 6px; background: repeating-linear-gradient(90deg, #fffffa 0 18px, #ff7a1a 18px 36px, #00c22e 36px 54px); }
+    .modal-head { padding: 18px 18px 12px; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .modal-logo { width: 52px; height: 52px; margin: 0 auto 12px; display: block; border-radius: 14px; object-fit: cover; }
+    .head-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .step-label { color: var(--dim); font-size: 11px; font-weight: 800; letter-spacing: 1.5px; }
+    .close { width: 36px; height: 36px; border: 0; border-radius: 12px; background: rgba(255,255,255,.08); color: #fff; cursor: pointer; }
+    .bar { height: 4px; border-radius: 3px; background: rgba(255,255,255,.08); overflow: hidden; }
+    .bar span { display: block; height: 100%; width: 25%; background: linear-gradient(90deg, #ff8a2a, #00b82d 55%, #00D632); }
+    .modal-body { overflow: auto; padding: 22px 18px 24px; }
+    .q { margin: 0 0 6px; font-size: 1.25rem; font-weight: 900; line-height: 1.28; }
+    .sub, .context { color: var(--muted); }
+    .sub { margin: 0 0 18px; font-size: .85rem; }
+    .context { display: none; margin: 0 0 16px; padding: 12px 14px; border-radius: 14px; border: 1px solid rgba(0,214,50,.28); background: rgba(0,214,50,.08); font-size: .8rem; line-height: 1.55; }
+    .options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .options.stack { grid-template-columns: 1fr; }
+    .opt { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; min-height: 108px; padding: 14px; border-radius: 16px; border: 1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.03); color: #fff; text-align: left; cursor: pointer; }
+    .options.stack .opt { flex-direction: row; align-items: center; min-height: 80px; }
+    .opt.selected { border-color: rgba(0,214,50,.7); background: linear-gradient(180deg, rgba(0,214,50,.16), rgba(255,255,255,.04)); }
+    .opt.dim { opacity: .55; }
+    .opt img, .emoji { width: 44px; height: 44px; border-radius: 12px; flex: 0 0 44px; }
+    .emoji { display: grid; place-items: center; background: rgba(255,255,255,.06); font-size: 24px; }
+    .opt b { display: block; font-size: .92rem; }
+    .opt small { display: block; color: var(--dim); font-size: .74rem; font-weight: 600; }
+    .badge { position: absolute; top: 0; right: 14px; padding: 4px 8px 3px; border-radius: 0 0 8px 8px; background: linear-gradient(90deg, #fbbf24, #f59e0b); color: #1a0a00; font-size: .58rem; font-weight: 900; letter-spacing: .4px; }
+    .next { margin-top: 18px; }
+    .calc, .result { display: none; text-align: center; }
+    .calc.show, .result.show { display: block; }
+    .spin { width: 72px; height: 72px; margin: 0 auto 24px; border-radius: 50%; border: 3px solid rgba(255,255,255,.15); border-top-color: var(--green); animation: spin .9s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .calc p { margin: 0 0 18px; color: rgba(0,214,50,.9); font-size: 12px; font-weight: 800; letter-spacing: .14em; }
+    .calc li { display: flex; justify-content: center; gap: 10px; margin: 10px 0; color: var(--dim); list-style: none; font-size: 14px; font-weight: 700; }
+    .calc li.on { color: #fff; }
+    .calc li.done { color: var(--green); }
+    .result-card { margin-bottom: 16px; padding: 14px 16px 0; border-radius: 20px; overflow: hidden; text-align: center; background: linear-gradient(180deg, rgba(0,120,40,.55), rgba(5,16,9,.92)); border: 1px solid rgba(0,194,46,.35); }
+    .result-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .mini { display: flex; align-items: center; gap: 6px; font-weight: 900; }
+    .kicker { margin: 0 0 8px; font-weight: 800; }
+    .big { margin: 0; font-size: 2.7rem; font-weight: 900; line-height: 1; }
+    .pending { margin: 8px 0 14px; color: #b9cbbd; font-size: .8rem; }
+    .pick { padding: 10px 12px; margin-bottom: 14px; border-radius: 14px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08); text-align: left; }
+    .pick img { width: 40px; height: 40px; border-radius: 10px; }
+    .pick div { flex: 1; }
+    .pick span { color: #8ea596; font-size: .74rem; }
+    .pick strong { color: var(--green); font-size: 1.1rem; }
+    .result-timer { margin: 0 -16px; padding: 10px 12px; background: rgba(255,122,26,.14); border-top: 1px solid rgba(255,122,26,.3); color: #ffb070; font-size: .82rem; font-weight: 800; }
+    .live { display: flex; justify-content: center; align-items: center; gap: 8px; margin: 12px 0 0; color: var(--muted); font-size: 12px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 10px rgba(0,214,50,.55); }
+    .how { margin-top: 18px; padding: 6px 14px; border-radius: 18px; border: 1px solid rgba(0,214,50,.18); text-align: left; background: linear-gradient(180deg, rgba(10,20,13,.95), rgba(6,13,8,.98)); }
+    .how .step { padding: 12px 0; }
+    .label { margin: 22px 0 10px; color: #8ea596; font-size: .7rem; font-weight: 800; letter-spacing: .14em; text-align: left; }
+    .lock { position: relative; margin-top: 16px; padding: 16px; border-radius: 22px; border: 1px solid rgba(255,122,26,.55); text-align: left; background: linear-gradient(180deg, rgba(10,20,13,.95), rgba(6,13,8,.98)); }
+    .important { position: absolute; right: 16px; top: -10px; padding: 6px 12px; border-radius: 999px; background: linear-gradient(90deg, #ff7a1a, #00D632); font-size: 12px; font-weight: 800; }
+    .legal { margin-top: 14px; color: var(--dim); font-size: .7rem; line-height: 1.5; }
+    @media (max-width: 480px) {
+      .wrap { padding-top: 18px; }
+      h1 { font-size: 33px; }
+      .logo { width: 64px; height: 64px; border-radius: 18px; }
+      .amt { font-size: 46px; }
+      .pumpkin { width: 52px; height: 52px; top: 52px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="deco" aria-hidden="true">
+      <div class="moon"></div>
+      <svg class="bat" style="left:14px;top:46px;width:36px" viewBox="0 0 64 32"><path d="M32 10c-2-5-5-7-5-7s1 4 0 6C22 4 10 2 0 8c7 0 11 5 11 10 4-3 9-3 12 1 2-3 6-4 9-1 3-3 7-2 9 1 3-4 8-4 12-1 0-5 4-10 11-10C54 2 42 4 37 9c-1-2 0-6 0-6s-3 2-5 7z"/></svg>
+      <svg class="bat b2" style="right:96px;top:84px;width:24px" viewBox="0 0 64 32"><path d="M32 10c-2-5-5-7-5-7s1 4 0 6C22 4 10 2 0 8c7 0 11 5 11 10 4-3 9-3 12 1 2-3 6-4 9-1 3-3 7-2 9 1 3-4 8-4 12-1 0-5 4-10 11-10C54 2 42 4 37 9c-1-2 0-6 0-6s-3 2-5 7z"/></svg>
+    </div>
+    <main class="wrap">
+      <img class="logo" src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/95/80/3f/95803f70-b967-6f09-8ff6-305257446055/Placeholder.mill/400x400bb-75.webp" alt="Cash App">
+      <section class="hero">
+        <div class="pill">🎃 Halloween $750 drop · ends Oct 31</div>
+        <h1>Unlock Your<span class="grad">$750 Cash App Reward</span></h1>
+        <p class="copy">Trick or treat? Answer 4 quick questions, then complete a few sponsor deals to send <strong class="ca">$750</strong> straight to your <strong class="ca">Cash App</strong>.</p>
+        <div class="card" aria-label="$750 Cash App reward">
+          <div class="card-top">
+            <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/95/80/3f/95803f70-b967-6f09-8ff6-305257446055/Placeholder.mill/400x400bb-75.webp" alt="">
+            <div class="card-brand"><b>Cash App</b><span>Halloween Reward</span></div>
+            <span class="status">PENDING</span>
+          </div>
+          <div class="amt">$750<small>.00</small></div>
+          <div class="rows">
+            <div><span>To</span><b>Your Cash App</b></div>
+            <div><span>Unlock</span><b>Email + 3–5 deals</b></div>
+          </div>
+          <svg class="pumpkin" viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="38" rx="27" ry="22" fill="#ff7a1a"/><path d="M19 33l6 6h-8zM45 33l-6 6h8z" fill="#2a1200"/></svg>
+        </div>
+      </section>
+      <button class="btn" id="start" type="button">Start My $750 Claim 🎃</button>
+      <div class="timer">⏳ Today's Halloween drop ends in <b id="count">--:--:--</b></div>
+      <p class="spots">🔥 Only <b id="spots">43</b> $750 rewards left today</p>
+      <div class="proof">
+        <div><strong>$2.4M+</strong><span>rewarded</span></div><i></i>
+        <div><strong>18K+</strong><span>claimed</span></div><i></i>
+        <div><strong>~10 min</strong><span>to unlock</span></div>
+      </div>
+      <div class="journey">
+        <div class="journey-head">How to claim your $750</div>
+        <div class="step"><div class="num">1</div><div><h3>Enter your email</h3><p>Use a valid email address. It’s how your claim is confirmed and tracked.</p></div></div>
+        <div class="step"><div class="num">2</div><div><h3>Complete 3–5 deals</h3><p>Try sponsor apps, surveys, or free trials. Finish each deal as described in its terms.</p></div></div>
+        <div class="step"><div class="num">3</div><div><h3>Get your $750 to Cash App</h3><p>Once your deals are verified, your reward is released to your <strong class="ca">Cash App</strong>.</p></div></div>
+      </div>
+      <div class="social">
+        <div class="social-head"><span>Recent winners</span><span>Results vary</span></div>
+        <div class="review"><div class="who"><div class="av">KM</div><div><b>Kayla M.</b> <span class="city">Houston, TX</span></div></div><p>“Did the email part and 4 of the deals over lunch. Took about 15 minutes total and it was super straightforward.”</p><div class="stars">★★★★★</div></div>
+        <div class="rule"></div>
+        <div class="review"><div class="who"><div class="av">DR</div><div><b>Devon R.</b> <span class="city">Atlanta, GA</span></div></div><p>“Thought it was fake at first. Read the deal terms, finished my offers, and got verified. Worth it.”</p><div class="stars">★★★★★</div></div>
+        <div class="rule"></div>
+        <div class="review"><div class="who"><div class="av">AS</div><div><b>Ashley S.</b> <span class="city">Phoenix, AZ</span></div></div><p>“Easiest Halloween money ever. Just make sure you actually complete every deal, that’s the part people skip.”</p><div class="stars">★★★★★</div></div>
+      </div>
+      <div class="notice">
+        <div class="flag">Verification required</div>
+        <div><h3>Your $750 stays pending until you finish</h3><p>Enter a valid email and complete <strong>3–5 sponsor deals</strong>. Rewards are released after your deals are verified.</p></div>
+      </div>
+      <p class="foot">Not affiliated with, endorsed by, or sponsored by Cash App. Cash App is a trademark of Block, Inc. Must be 18+ and a US resident. Deal completion required. Results vary.</p>
+    </main>
+  </div>
+
+  <div class="overlay" id="overlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="stepLabel">
+      <div class="glow"></div>
+      <div class="modal-head" id="modalHead">
+        <img class="modal-logo" src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/95/80/3f/95803f70-b967-6f09-8ff6-305257446055/Placeholder.mill/400x400bb-75.webp" alt="Cash App">
+        <div class="head-row">
+          <span class="step-label" id="stepLabel">STEP 1 OF 4</span>
+          <button class="close" id="close" type="button" aria-label="Close">✕</button>
+        </div>
+        <div class="bar"><span id="fill"></span></div>
+      </div>
+      <div class="modal-body">
+        <div id="question">
+          <h2 class="q" id="qText"></h2>
+          <p class="sub" id="qSub"></p>
+          <p class="context" id="qContext"></p>
+          <div class="options" id="options"></div>
+          <button class="btn next" id="next" type="button" disabled>Next</button>
+        </div>
+        <div class="calc" id="calc">
+          <div class="spin" aria-hidden="true"></div>
+          <p>RESERVING YOUR $750 REWARD…</p>
+          <ul>
+            <li id="c1">Checking Halloween reward availability</li>
+            <li id="c2">Matching your sponsor deals</li>
+            <li id="c3">Reserving $750 for your Cash App</li>
+          </ul>
+        </div>
+        <div class="result" id="result">
+          <div class="result-card">
+            <div class="result-top">
+              <div class="mini"><img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/95/80/3f/95803f70-b967-6f09-8ff6-305257446055/Placeholder.mill/400x400bb-75.webp" alt=""><span>Cash App</span></div>
+              <span class="unlocked">🎃 Bonus unlocked</span>
+            </div>
+            <p class="kicker">Your Halloween reward is reserved</p>
+            <p class="big">$750.00</p>
+            <p class="pending">Pending · complete your steps to release it</p>
+            <div class="pick">
+              <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/95/80/3f/95803f70-b967-6f09-8ff6-305257446055/Placeholder.mill/400x400bb-75.webp" alt="">
+              <div><b>Your Cash App</b><span id="when">Destination · paid after verification</span></div>
+              <strong>$750</strong>
+            </div>
+            <div class="result-timer">⏳ Reserved for you for <b id="count2">--:--:--</b></div>
+          </div>
+          <a class="claim" id="claim" href="http://t.garageredeem.com/click">Claim My $750 Now →</a>
+          <p class="live"><span class="dot" aria-hidden="true"></span><span><strong id="claimed">705</strong> people claimed their $750 in the last hour</span></p>
+          <p class="label">HOW TO CLAIM</p>
+          <div class="how">
+            <div class="step"><div class="num">1</div><div><h3>Enter your email</h3><p>Use a valid email address. It’s how your claim is confirmed and tracked.</p></div></div>
+            <div class="step"><div class="num">2</div><div><h3>Complete 3–5 deals</h3><p>Try sponsor apps, surveys, or free trials. Finish each deal as described in its terms.</p></div></div>
+            <div class="step"><div class="num">3</div><div><h3>Get your $750 to Cash App</h3><p>Once your deals are verified, your reward is released to your Cash App.</p></div></div>
+          </div>
+          <div class="lock">
+            <div class="important">IMPORTANT</div>
+            <h3>Verification Required</h3>
+            <p>Your $750 is released only after you enter a valid email and complete 3–5 sponsor deals. Read each deal's terms so it counts.</p>
+          </div>
+          <p class="legal">Not affiliated with Cash App. Must be 18+ and a US resident. Deal completion required. Results vary.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    var ICON = 'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/95/80/3f/95803f70-b967-6f09-8ff6-305257446055/Placeholder.mill/400x400bb-75.webp';
+    var OFFER = 'http://t.garageredeem.com/click';
+    var questions = [
+      { text: 'What would you do with $750 this Halloween?', sub: 'Pick one. It helps us match your sponsor deals.', opts: [
+        { title: 'Pay some bills', sub: 'Breathing room this month', icon: '🧾' },
+        { title: 'Go shopping', sub: 'Costumes, clothes & more', icon: '🛍️' },
+        { title: 'Save it', sub: 'Build my stack', icon: '🏦' },
+        { title: 'Treat myself', sub: 'I deserve it', icon: '🍬' }
+      ]},
+      { text: 'Do you already have Cash App?', sub: 'Your $750 is sent to your Cash App once verified.', stack: true, opts: [
+        { title: 'Yes, I use Cash App', sub: 'Fastest way to get paid', img: ICON, badge: 'FASTEST' },
+        { title: 'Not yet', sub: "It's free and takes 2 minutes to set up", icon: '📲' }
+      ]},
+      { text: 'Can you complete 3–5 quick sponsor deals?', sub: '', context: "Sponsors fund the $750 rewards. Deals are things like app sign-ups, surveys, or free trials. You only unlock your reward after they're completed and verified.", stack: true, opts: [
+        { title: "Yes, let's do it", sub: "I'll finish my deals today", icon: '⚡', badge: 'RECOMMENDED' },
+        { title: 'Yes, but show me how', sub: 'Walk me through the steps', icon: '❓' },
+        { title: 'Not sure yet', sub: "I'll take a look first", icon: '⏱️' }
+      ]},
+      { text: 'When do you want your $750?', sub: 'Halloween rewards are limited each day.', stack: true, opts: [
+        { title: 'Today', sub: "I'm ready right now", icon: '🔥', badge: 'MOST POPULAR' },
+        { title: 'This week', sub: 'Before the weekend', icon: '📅' },
+        { title: 'Before Halloween night', sub: 'By October 31', icon: '🎃' }
+      ]}
+    ];
+    var current = 0, picked = null, answers = [];
+    var overlay = document.getElementById('overlay');
+    var question = document.getElementById('question');
+    var calc = document.getElementById('calc');
+    var result = document.getElementById('result');
+    function openQuiz() {
+      current = 0; answers = []; picked = null;
+      question.hidden = false; question.style.display = '';
+      calc.classList.remove('show'); result.classList.remove('show');
+      document.getElementById('modalHead').hidden = false;
+      render();
+      overlay.classList.add('open');
+      overlay.setAttribute('aria-hidden', 'false');
+    }
+    function closeQuiz() {
+      overlay.classList.remove('open');
+      overlay.setAttribute('aria-hidden', 'true');
+    }
+    function render() {
+      var q = questions[current];
+      document.getElementById('qText').textContent = q.text;
+      document.getElementById('qSub').textContent = q.sub || '';
+      var ctx = document.getElementById('qContext');
+      ctx.style.display = q.context ? 'block' : 'none';
+      ctx.textContent = q.context || '';
+      document.getElementById('stepLabel').textContent = 'STEP ' + (current + 1) + ' OF 4';
+      document.getElementById('fill').style.width = ((current + 1) / 4 * 100) + '%';
+      var wrap = document.getElementById('options');
+      wrap.className = 'options' + (q.stack ? ' stack' : '');
+      wrap.innerHTML = '';
+      picked = null;
+      var next = document.getElementById('next');
+      next.disabled = true;
+      next.textContent = current === 3 ? 'Finish' : 'Next';
+      q.opts.forEach(function (opt, i) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'opt';
+        var mark = opt.img ? '<img src="' + opt.img + '" alt="">' : '<span class="emoji">' + opt.icon + '</span>';
+        btn.innerHTML = (opt.badge ? '<span class="badge">' + opt.badge + '</span>' : '') + mark + '<span><b>' + opt.title + '</b><small>' + opt.sub + '</small></span>';
+        btn.addEventListener('click', function () {
+          picked = i;
+          Array.prototype.forEach.call(wrap.children, function (el, n) { el.classList.toggle('selected', n === i); el.classList.toggle('dim', n !== i); });
+          next.disabled = false;
+        });
+        wrap.appendChild(btn);
+      });
+    }
+    document.getElementById('start').addEventListener('click', openQuiz);
+    document.getElementById('close').addEventListener('click', closeQuiz);
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) closeQuiz(); });
+    document.getElementById('next').addEventListener('click', function () {
+      if (picked === null) return;
+      answers[current] = questions[current].opts[picked].title;
+      if (current < 3) { current += 1; render(); return; }
+      question.style.display = 'none';
+      calc.classList.add('show');
+      document.getElementById('stepLabel').textContent = 'CALCULATING';
+      ['c1','c2','c3'].forEach(function (id, n) {
+        setTimeout(function () { document.getElementById(id).classList.add('on'); }, 500 + n * 700);
+        setTimeout(function () { var el = document.getElementById(id); el.classList.remove('on'); el.classList.add('done'); }, 1100 + n * 700);
+      });
+      setTimeout(function () {
+        calc.classList.remove('show');
+        result.classList.add('show');
+        document.getElementById('modalHead').hidden = true;
+        var when = answers[3] === 'Today' ? 'claim today' : 'claim ' + answers[3].toLowerCase();
+        document.getElementById('when').textContent = 'Destination · ' + when;
+      }, 3400);
+    });
+    document.getElementById('claim').addEventListener('click', function (e) {
+      e.preventDefault();
+      window.location.href = OFFER;
+    });
+    function tick() {
+      var end = new Date(); end.setHours(23, 59, 59, 0);
+      var s = Math.max(0, Math.floor((end - new Date()) / 1000));
+      var txt = String(Math.floor(s / 3600)).padStart(2, '0') + ':' + String(Math.floor(s % 3600 / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
+      document.getElementById('count').textContent = txt;
+      document.getElementById('count2').textContent = txt;
+    }
+    tick(); setInterval(tick, 1000);
+    var spots = 38 + Math.floor(Math.random() * 12);
+    document.getElementById('spots').textContent = spots;
+    setInterval(function () { if (spots > 9 && Math.random() > 0.55) document.getElementById('spots').textContent = --spots; }, 7000);
+  </script>
+</body>
+</html>
